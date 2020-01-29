@@ -2,6 +2,12 @@ import EmberObject, { computed } from '@ember/object';
  
 export default EmberObject.extend({
   services: [],
+  remises: {
+    "B22":0.05,
+    "AZ":0.01,
+    "UBOAT":0.02
+  },
+  isChecked: false,
   countActive: computed('services.@each.active', function () {
     var nb = 0
     for (const key in this.services) {

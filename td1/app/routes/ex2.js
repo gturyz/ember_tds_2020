@@ -15,7 +15,7 @@ export default Route.extend({
                     "active":false
                 },{
                     "name": "Integration",
-                    "price": 250,
+                    "price": 250.87,
                     "active":false
                 },{
                     "name": "Formation",

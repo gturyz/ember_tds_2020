@@ -5,33 +5,41 @@
 	<div class="alert alert-info">
 		<span>Choisissez les éléments à inclure</span>
 		<p>
-			{{model.countActive}} services sélectionnés
+            {{#if model.countActive}}
+                {{model.countActive}} service{{plural model.countActive}} sélectionné{{plural model.countActive}}
+            {{else}}
+                Aucun service sélectionné
+            {{/if}}
 		</p>
 	</div>
 	<ul class="list-group">
         {{#each model.services as |service|}}
 		<li {{action "toggleActive" service}} class="list-group-item-action list-group-item {{if service.active "active" ""}}">
-			{{service.name}} <span>{{service.price}}</span>
+			{{service.name}} <span>{{format-currency service.price}}</span>
 		</li>
         {{/each}}
 	</ul>
 
 	<div class="total">
 		<!-- Format en currency. -->
-		Total: <span>{{model.sumActive}}</span>
+		Total: <span>{{format-currency model.sumActive}}</span>
 	</div>
 	<div>
-		<div class="input-group">
-      <span class="input-group-addon">
-        <input type="checkbox" aria-label="..." ng-model="sCtrl.ckPromo" ng-click="sCtrl.applyCode()">
-      </span>
-			<input type="text" class="form-control" aria-label="..." ng-model="sCtrl.codePromo" placeholder="Code promo" ng-keyup="sCtrl.applyCode()">
-		</div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" checked={{isChecked}}/>
+                </div>
+            </div>
+            <input type="text" class="form-control" placeholder="Code promo">
+        </div>
 	</div>
-	{{!-- <div class="total" ng-show="sCtrl.ckPromo&&sCtrl.codePromo">
-		Remise :<span ng-if="sCtrl.IsNumeric(sCtrl.remise)">{{sCtrl.remise | currency}}</span><span ng-if="!sCtrl.IsNumeric(sCtrl.remise)">{{sCtrl.remise}}</span><br>
-		Total avec remise :<span>{{model.sumActive-model.remise | currency}}</span>
-	</div> --}}
+    {{#if model.isChecked}}
+	<div class="total">
+		<span>Remise : 0</span><span>0</span><br>
+		Total avec remise :<span>0</span>
+	</div>
+    {{/if}}
 </form>
 <style>
     form{
