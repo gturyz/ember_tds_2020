@@ -1,0 +1,100 @@
+<br>
+<form class="rounded">
+
+	<h1>Services</h1>
+	<div class="alert alert-info">
+		<span>Choisissez les éléments à inclure</span>
+		<p>
+			{{model.countActive}} services sélectionnés
+		</p>
+	</div>
+	<ul class="list-group">
+        {{#each model.services as |service|}}
+		<li {{action "toggleActive" service}} class="list-group-item-action list-group-item {{if service.active "active" ""}}">
+			{{service.name}} <span>{{service.price}}</span>
+		</li>
+        {{/each}}
+	</ul>
+
+	<div class="total">
+		<!-- Format en currency. -->
+		Total: <span>{{model.sumActive}}</span>
+	</div>
+	<div>
+		<div class="input-group">
+      <span class="input-group-addon">
+        <input type="checkbox" aria-label="..." ng-model="sCtrl.ckPromo" ng-click="sCtrl.applyCode()">
+      </span>
+			<input type="text" class="form-control" aria-label="..." ng-model="sCtrl.codePromo" placeholder="Code promo" ng-keyup="sCtrl.applyCode()">
+		</div>
+	</div>
+	{{!-- <div class="total" ng-show="sCtrl.ckPromo&&sCtrl.codePromo">
+		Remise :<span ng-if="sCtrl.IsNumeric(sCtrl.remise)">{{sCtrl.remise | currency}}</span><span ng-if="!sCtrl.IsNumeric(sCtrl.remise)">{{sCtrl.remise}}</span><br>
+		Total avec remise :<span>{{model.sumActive-model.remise | currency}}</span>
+	</div> --}}
+</form>
+<style>
+    form{
+        background-color: #61a1bc;
+        border-radius: 2px;
+        box-shadow: 0 1px 1px #ccc;
+        width: 500px;
+        padding: 35px 60px;
+        margin: 50px auto;
+    }
+
+    form h1{
+        color:#fff;
+        font-size:50px;
+        font-family:'Century gothic', cursive;
+        font-weight: normal;
+        line-height:1;
+        text-shadow:0 3px 0 rgba(0,0,0,0.1);
+    }
+
+    form ul{
+        list-style:none;
+        color:#fff;
+        font-size:20px;
+        font-weight:bold;
+        text-align: left;
+        margin:20px 0 15px;
+    }
+
+    form ul li{
+        padding:20px 30px;
+        background-color:#777;
+        margin-bottom:8px;
+        box-shadow:0 1px 1px rgba(0,0,0,0.1);
+        cursor:pointer;
+        border-radius:4px;
+    }
+
+    form ul li span{
+        float:right;
+    }
+
+    form ul li.active{
+        background-color:#8ec16d;
+    }
+
+    div.total{
+        border-top:1px solid rgba(255,255,255,0.5);
+        padding:15px 30px;
+        font-size:20px;
+        font-weight:bold;
+        text-align: left;
+        color:#fff;
+    }
+
+    div.total span{
+        float:right;
+    }
+    .alert{
+        text-align: left;
+    }
+    .alert p{
+        font-weight: bold;
+    }
+</style>
+{{outlet}}
