@@ -8,6 +8,10 @@ export default EmberObject.extend({
     "UBOAT":0.02
   },
   isChecked: false,
+  isRemiseValide: computed('remises', 'valPromo', function () {
+    return this.remises.hasOwnProperty(this.valPromo)
+  }),
+  valPromo: "",
   countActive: computed('services.@each.active', function () {
     var nb = 0
     for (const key in this.services) {
@@ -17,6 +21,9 @@ export default EmberObject.extend({
     }
     return nb
   }),
+  sumRemActive: computed('sumActive', 'remActive', function () {
+    return this.sumActive - this.remActive
+  }),
   sumActive: computed('services.@each.active', function () {
     var sum = 0
     for (const key in this.services) {
@@ -25,5 +32,8 @@ export default EmberObject.extend({
         }
     }
     return sum
+  }),
+  remActive: computed('remises', 'valPromo', 'sumActive', function () {
+    return this.remises[this.valPromo]*this.sumActive
   })
 });

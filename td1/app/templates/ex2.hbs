@@ -28,16 +28,26 @@
         <div class="input-group">
             <div class="input-group-prepend">
                 <div class="input-group-text">
-                    <input type="checkbox" checked={{isChecked}}/>
+                    {{input type="checkbox" checked=model.isChecked}}
                 </div>
             </div>
-            <input type="text" class="form-control" placeholder="Code promo">
+            {{input type="text" class="form-control" placeholder="Code promo" value=model.valPromo}}
         </div>
 	</div>
     {{#if model.isChecked}}
 	<div class="total">
-		<span>Remise : 0</span><span>0</span><br>
-		Total avec remise :<span>0</span>
+		Remise : 
+        {{#if model.isRemiseValide}}
+            <span>{{format-currency model.remActive}}</span>
+        {{else}}
+            <span>Code promo invalide</span>
+        {{/if}}<br>
+		Total avec remise : 
+        {{#if model.isRemiseValide}}
+            <span>{{format-currency model.sumRemActive}}</span>
+        {{else}}
+            <span></span>
+        {{/if}}
 	</div>
     {{/if}}
 </form>
