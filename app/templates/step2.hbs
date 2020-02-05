@@ -1,0 +1,14 @@
+<form class="img-rounded ng-pristine ng-valid ng-scope" id="choixMultiples">
+    <div ng-show="step==2" class="ng-hide">
+        <h1>Votre choix</h1>
+        <ul>
+            <!-- ngRepeat: item in includedItems -->
+        </ul>
+        <div>
+            <div class="btn btn-primary" style="width:98%;text-align: right;margin-top:5px" ng-click="step=1">
+                <span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-left"></span><span>     Retour au choix précédent</span>
+            </div>
+        </div>
+    </div>
+</form>
+{{outlet}}
