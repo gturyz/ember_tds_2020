@@ -1,15 +1,19 @@
 import EmberObject, { computed } from '@ember/object';
+import { map } from '@ember/object/computed';
  
 export default EmberObject.extend({
-    dispoItems: null,
-    includedItems: null,
-    dispoItemsIds_: null,
-    includedItemsIds_: null,
-    dispoItems_: computed('dispoItems', function () {
-        // Array.map
-        return null
+    dispoItems: [],
+    includedItems: [],
+    dispoItemsIds_: [],
+    includedItemsIds_: [],
+    selectedDispoItems: computed('dispoItemsIds_.[]','dispoItems.[]', function() {
+      return this.get('dispoItemsIds_').map((id) => {
+        return this.get('dispoItems').findBy('id', id);
+      });
     }),
-    includedItems_: computed('includedItems', function () {
-        return null
+    selectedIncludedItems: computed('includedItemsIds_.[]','includedItems.[]', function() {
+      return this.get('includedItemsIds_').map((id) => {
+        return this.get('includedItems').findBy('id', id);
+      });
     })
 });

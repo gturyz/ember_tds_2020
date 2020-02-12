@@ -1,13 +1,18 @@
-<form class="img-rounded ng-pristine ng-valid ng-scope" id="choixMultiples">
-    <div ng-show="step==2" class="ng-hide">
+<form class="img-rounded" id="choixMultiples">
+    <div id="step2">
         <h1>Votre choix</h1>
         <ul>
-            <!-- ngRepeat: item in includedItems -->
+        {{#each model.includedItems as |item|}}
+            <li>
+            <a href="{{item.url}}"><img src="{{item.image}}" /></a>
+            <p>{{item.title}}</p>
+            </li>
+        {{/each}}
         </ul>
         <div>
-            <div class="btn btn-primary" style="width:98%;text-align: right;margin-top:5px" ng-click="step=1">
-                <span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-left"></span><span>     Retour au choix précédent</span>
-            </div>
+        <button {{action  "toggleStep"}} class="btn btn-primary action-step">
+            <span aria-hidden="true" class="glyphicon glyphicon-circle-arrow-left"></span><span>     Retour au choix précédent</span>
+        </button>
         </div>
     </div>
 </form>
