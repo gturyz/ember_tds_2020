@@ -16,11 +16,11 @@ export default Component.extend({
     });
   }),
   change(event){
-    const selectedIds = $(event.target).val();
+    const selectedIds = event.target.options[event.target.selectedIndex].value;
     this.set('selectedIds', selectedIds || []);
   },
   doubleClick(event){
-      const selected = $(event.target).val();
-      this.sendAction('dblClick',selected,this.get('id'));
+    const selected = event.target.value;
+    this.sendAction('dblClick',selected,event.target.parentElement.id);
   }
 });

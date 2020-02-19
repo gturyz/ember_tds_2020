@@ -58,6 +58,7 @@ export default Route.extend({
       set(model,'selectedIncludedItemsIds',[]);
     },
     move:function(selectedId,selectId){
+      // debugger;
       let model=this.modelFor(this.routeName);
       let source,dest,what;
       if(selectId==='s1'){
