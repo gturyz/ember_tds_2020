@@ -1,0 +1,49 @@
+<div id="contact">
+	<div class="card">
+		<div class="card-header"><h1 class="text-center">Gestion des contacts</h1></div>
+		<div class="card-body">
+            <input type="text" placeholder="Filtrer..." data-ng-model="q" class="form-control">
+            <br>
+            <table class="table table-striped" id="lstContact">
+                <thead>
+                    <tr>
+                        <td>Nom</td>
+                        <td>Prénom</td>
+                        <td>Email</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>                
+                    {{#each model.datas as |contact|}}
+                        <tr>
+                            <td>{{contact.nom}}</td>
+                            <td>{{contact.prenom}}</td>
+                            <td>{{contact.email}}</td>
+                            <td>[<LinkTo @route="contacts.edit" @model={{contact}}>...</LinkTo>] [<a href="" {{action "delete" contact}}>X</a>]</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+                <tfoot>                
+                    <tr><td colspan="4">
+                        {{!-- <a id="add" href=""  class="btn btn-primary">Ajouter...</a> --}}
+                        {{#link-to "contacts.add"}}<a id="add" href=""  class="btn btn-primary">Ajouter...</a>{{/link-to}}
+                        <a id="add" href="" data-ng-show="results.length<cCtrl.contacts.length && !q" data-ng-click="cCtrl.cancelOne()" class="btn btn-danger">
+                        <data-ng-pluralize count="cCtrl.contacts.length-results.length"
+                            when="{'one': 'Annuler la suppression.',
+                                'other': 'Annuler les suppressions ({}) .'}">
+                        </data-ng-pluralize>
+                        </a></td>
+                    </tr>
+                </tfoot>
+            </table>
+        {{outlet}}
+	</div>
+		<frm-contact-elem></frm-contact-elem>
+			<div class="container"><data-ng-pluralize count="results.length"
+					 when="{'0': 'Aucun résultat.',
+						 'one': '1 contact trouvé.',
+						 'other': '{} contacts trouvés.'}">
+			</data-ng-pluralize>
+		</div>
+	</div>
+</div>
