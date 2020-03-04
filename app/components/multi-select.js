@@ -1,13 +1,16 @@
+/* eslint-disable ember/no-jquery */
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import $ from 'jquery'
  
 export default Component.extend({
+  init() {
+    this._super(...arguments);
+    this.set('selectedIds', []);
+  },
   tagName: 'select',
   classNames: ['form-control'],
-  selectedIds:[],
   attributeBindings: ['multiple','size'],
- 
   multiple: true,
   size: 10,
   selectedElements: computed('selectedIds.[]', function() {
@@ -16,11 +19,11 @@ export default Component.extend({
     });
   }),
   change(event){
-    const selectedIds = event.target.options[event.target.selectedIndex].value;
+    const selectedIds = $(event.target).val();
     this.set('selectedIds', selectedIds || []);
   },
   doubleClick(event){
-    const selected = event.target.value;
-    this.sendAction('dblClick',selected,event.target.parentElement.id);
+    const selected = $(event.target).val();
+    this.sendAction('dblClick',selected,$(event.target).closest('select').attr('id'));
   }
 });
