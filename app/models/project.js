@@ -1,6 +1,9 @@
 import DS from 'ember-data';
-const { Model } = DS;
 
-export default Model.extend({
-
+export default DS.Model.extend({
+    name: DS.attr('string'),
+    descriptif: DS.attr('string'),
+    startDate: DS.attr('date'),
+    dueDate: DS.attr('date'),
+    ownerId: DS.attr('string')
 });

@@ -17,26 +17,22 @@
     </tr>
   </thead>
   <tbody>
+    {{#each this.model.projects as |project|}}
     <tr>
-      <th scope="row">Mark</th>
-      <th scope="row">Mark</th>
-      <th scope="row">Mark</th>
-      <th scope="row">Mark</th>
+      <th scope="row">{{project.name}}</th>
+      <th scope="row">{{project.descriptif}}</th>
+      <th scope="row">{{project.startDate}}</th>
+      <th scope="row">{{project.dueDate}}</th>
       <td class="text-right">
-          <button type="button" class="btn btn-outline-secondary btn-circle"><i class="fa fa-pencil-square-o"></i></button>
-          <button type="button" class="btn btn-outline-danger btn-circle"><i class="fa fa-times"></i></button>
+          <button type="button" {{action "updateProject" project.id}} class="btn btn-outline-secondary btn-circle"><i class="fa fa-pencil-square-o"></i></button>
+          <button type="button" {{action "showDeleteModal" project}} class="btn btn-outline-danger btn-circle"><i class="fa fa-times"></i></button>
       </td>
     </tr>
-    <tr>
-      <th scope="row">Jacob</th>
-      <th scope="row">Jacob</th>
-      <th scope="row">Jacob</th>
-      <th scope="row">Jacob</th>
-      <td class="text-right">
-          <button type="button" class="btn btn-outline-secondary btn-circle"><i class="fa fa-pencil-square-o"></i></button>
-          <button type="button" class="btn btn-outline-danger btn-circle"><i class="fa fa-times"></i></button>
-      </td>
-    </tr>
+    {{/each}}
+    {{#if this.model.projects}}
+    {{else}}
+        <tr><th scope="row">Project list is empty!!!</th></tr>
+    {{/if}}
   </tbody>
 </table>
 {{outlet}}
