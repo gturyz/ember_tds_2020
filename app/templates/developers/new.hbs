@@ -6,8 +6,8 @@
 </div>
 <div class="form-group">
     <label for="inputName">Identity</label>
-    {{input class="form-control" id="inputName" value=developerName}}
+    <Input class="form-control" id="inputName" @value={{model.identity}}></Input>
 </div>
-<LinkTo type="button" onclick={{route-action 'createNewDeveloper' this}} @route="developers" class="btn btn-success"><i class="fa fa-check-circle"></i> Validate</LinkTo>
+<a type="button" {{action 'createNewDeveloper' model}} class="btn btn-success"><i class="fa fa-check-circle"></i> Validate</a>
 <LinkTo type="button" @route="developers" class="btn btn-secondary"><i class="fa fa-times-circle"></i> Cancel</LinkTo>
 {{outlet}}
