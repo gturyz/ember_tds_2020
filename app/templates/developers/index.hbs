@@ -14,20 +14,18 @@
     </tr>
   </thead>
   <tbody>
+    {{#each this.model.developers as |developer|}}
     <tr>
-      <th scope="row">Mark</th>
+      <th scope="row">{{developer.name}}</th>
       <td class="text-right">
           <button type="button" class="btn btn-outline-secondary btn-circle"><i class="fa fa-pencil-square-o"></i></button>
           <button type="button" class="btn btn-outline-danger btn-circle"><i class="fa fa-times"></i></button>
       </td>
     </tr>
-    <tr>
-      <th scope="row">Jacob</th>
-      <td class="text-right">
-          <button type="button" class="btn btn-outline-secondary btn-circle"><i class="fa fa-pencil-square-o"></i></button>
-          <button type="button" class="btn btn-outline-danger btn-circle"><i class="fa fa-times"></i></button>
-      </td>
-    </tr>
+    {{/each}}
+    {{#if this.model.developers}}
+    {{else}}
+        <tr><th scope="row">Developer list is empty!!!</th></tr>
+    {{/if}}
   </tbody>
 </table>
-{{outlet}}
