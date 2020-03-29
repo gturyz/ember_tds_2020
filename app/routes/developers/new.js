@@ -7,7 +7,6 @@ export default Route.extend({
     },
     actions: {
 		createNewDeveloper(data) {
-            debugger
 			let developer = this.store.createRecord('developer', {
 				identity: data.identity
 			});
