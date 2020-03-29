@@ -1,0 +1,42 @@
+<div class="alert jumbotron">
+  <div class="container">
+    <h1 class="display-15">models\Project</h1>
+    <p class="lead">Data administration</p>
+  </div>
+</div>
+<LinkTo class="btn btn-warning" @route="projects.new"><i class="fa fa-plus"></i> Add a new models\Project...</LinkTo>
+<br><br>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Descriptif</th>
+      <th scope="col">StartDate</th>
+      <th scope="col">DueDate</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Mark</th>
+      <th scope="row">Mark</th>
+      <th scope="row">Mark</th>
+      <th scope="row">Mark</th>
+      <td class="text-right">
+          <button type="button" class="btn btn-outline-secondary btn-circle"><i class="fa fa-pencil-square-o"></i></button>
+          <button type="button" class="btn btn-outline-danger btn-circle"><i class="fa fa-times"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Jacob</th>
+      <th scope="row">Jacob</th>
+      <th scope="row">Jacob</th>
+      <th scope="row">Jacob</th>
+      <td class="text-right">
+          <button type="button" class="btn btn-outline-secondary btn-circle"><i class="fa fa-pencil-square-o"></i></button>
+          <button type="button" class="btn btn-outline-danger btn-circle"><i class="fa fa-times"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+{{outlet}}
