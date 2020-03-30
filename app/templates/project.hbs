@@ -11,10 +11,10 @@
   <tbody>
     {{#each this.model.stories as |story|}}
     <tr>
-      <th scope="row"><i class="fa fa-file fa-3x"></i></th>
+      <th scope="row"><i class="fa fa-file fa-2x"></i></th>
       <td>
         <b class="display-15">{{story.code}}</b>
-        <p>{{story.description}} {{#each story.tags as |tag|}}<span class="badge" class={{badge tag.color}}>{{tag.title}}</span>{{/each}}</p>
+        <p>{{story.description}} {{#each story.tags as |tag|}}<span class="badge {{badge tag.color}}">{{tag.title}}</span>{{/each}}</p>
       </td>
       <td>
         <div class="input-group mb-3 justify-content-end">

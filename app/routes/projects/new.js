@@ -12,23 +12,11 @@ export default Route.extend({
     actions: {
 		createNewProject(data) {
             let self = this;
-            let dueDate = new Date(data.dueDate);
-            if (data.dueDate===""|| (dueDate.getDate()==1&&dueDate.getMonth()==0&&dueDate.getFullYear()==1970)) {
-                dueDate = "00-00-0000";
-            } else {
-                dueDate = data.dueDate
-            }
-            let startDate = new Date(startDate);
-            if (data.startDate===""|| (startDate.getDate()==1&&startDate.getMonth()==0&&startDate.getFullYear()==1970)) {
-                startDate = "00-00-0000";
-            } else {
-                startDate = data.startDate
-            }
 			let project = this.store.createRecord('project', {
                 name: data.name,
                 descriptif: data.descriptif,
-                startDate: new Date(startDate),
-                dueDate: new Date(dueDate),
+                startDate: new Date(data.startDate),
+                dueDate: new Date(data.dueDate),
                 owner: self.owner
 			});
             project.save().then(()=>this.transitionTo("projects"));
