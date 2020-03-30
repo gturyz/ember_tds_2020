@@ -8,16 +8,6 @@ export default Route.extend({
         }
 	},
 	actions: {
-		updateProject(data) {
-			this.store.findRecord('project', data.id).then(function(project) {
-				project.set('name',data.name);
-				project.set('descriptif',data.descriptif);
-				project.set('startDate',new Date(data.startDate));
-				project.set('dueDate',new Date(data.dueDate));
-				project.set('ownerId',data.ownerId);
-				project.save();
-			});
-        },
         showDeleteModal(data) {
             let tmp = confirm("Confirmer la suppression de "+data.name+" ?");
             if (tmp) {

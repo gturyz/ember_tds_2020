@@ -1,0 +1,12 @@
+<div class="alert jumbotron">
+  <div class="container">
+    <h1 class="display-15">models\Developer</h1>
+    <p class="lead">Edit object</p>
+  </div>
+</div>
+<div class="form-group">
+    <label for="inputName">Identity</label>
+    <Input class="form-control" id="inputName" @value={{model.identity}} value={{model.identity}}></Input>
+</div>
+<a type="button" {{action 'updateDeveloper' model}} class="btn btn-success"><i class="fa fa-check-circle"></i> Validate</a>
+<LinkTo type="button" @route="developers" class="btn btn-secondary"><i class="fa fa-times-circle"></i> Cancel</LinkTo>

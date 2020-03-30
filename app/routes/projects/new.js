@@ -6,22 +6,23 @@ export default Route.extend({
         return {
             project: EmberObject.create(),
             developers: this.store.findAll('developer'),
-            ownerId: ""
+            owner: ""
         }
     },
     actions: {
-		createNewProject(data, o) {
+		createNewProject(data) {
+            let self = this;
 			let project = this.store.createRecord('project', {
                 name: data.name,
                 descriptif: data.descriptif,
                 startDate: new Date(data.startDate),
                 dueDate: new Date(data.dueDate),
-                ownerId: o
+                owner: self.owner
 			});
             project.save().then(()=>this.transitionTo("projects"));
         },
         selectOption(data) {
-            this.ownerId = data.target.value;
+            this.owner = this.store.find('developer', data.target.value);
         }
     }
 });

@@ -1,0 +1,42 @@
+<div class="alert jumbotron">
+  <div class="container">
+    <h1 class="display-15">models\Project</h1>
+    <p class="lead">Edit object</p>
+  </div>
+</div>
+<form>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <Input type="text" class="form-control" id="name" placeholder="Name..." @value={{model.project.name}} value={{model.project.name}}></Input>
+  </div>
+  <div class="form-group">
+    <label for="descriptif">Descriptif</label>
+    <Textarea class="form-control" id="descriptif" rows="3" @value={{model.project.descriptif}} value={{model.project.descriptif}}></Textarea>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="startdate">StartDate</label>
+      <Input type="date" id="startdate" class="form-control" @value={{model.project.startDate}} value={{format-date-inverse model.project.startDate}}></Input>
+    </div>
+    <div class="col">
+      <label for="duedate">DueDate</label>
+      <Input type="date" id="duedate" class="form-control" @value={{model.project.dueDate}} value={{format-date-inverse model.project.dueDate}}></Input>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="owner">Owner</label>
+    <select class="form-control" id="owner" onchange={{route-action "selectOption" value='target.value'}}>
+      {{#each this.model.developers as |developer|}}
+        {{#if (eq model.project.owner.id developer.id)}}
+          <option value={{developer.id}} selected>{{developer.identity}}</option>
+        {{else}}
+          <option value={{developer.id}}>{{developer.identity}}</option>
+        {{/if}}
+      {{/each}}
+    </select>
+  </div>
+</form>
+<br>
+<a type="button" {{action 'updateProject' model.project}} class="btn btn-success"><i class="fa fa-check-circle"></i> Validate</a>
+<LinkTo type="button" @route="projects" class="btn btn-secondary"><i class="fa fa-times-circle"></i> Cancel</LinkTo>
+{{outlet}}

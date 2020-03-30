@@ -8,12 +8,6 @@ export default Route.extend({
         }
 	},
 	actions: {
-		updateDeveloper(data) {
-			this.store.findRecord('developer', data.id).then(function(developer) {
-				developer.set('identity',data.identity);
-				developer.save();
-			});
-        },
         showDeleteModal(data) {
             let tmp = confirm("Confirmer la suppression de "+data.identity+" ?");
             if (tmp) {

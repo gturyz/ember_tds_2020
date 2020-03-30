@@ -18,7 +18,7 @@
     <tr>
       <th scope="row">{{developer.identity}}</th>
       <td class="text-right">
-          <button type="button" {{action "updateDeveloper" developer.id}} class="btn btn-outline-secondary btn-circle"><i class="fa fa-pencil-square-o"></i></button>
+          <LinkTo type="button" @route="developers.edit" @model={{developer.id}} class="btn btn-outline-secondary btn-circle"><i class="fa fa-pencil-square-o"></i></LinkTo>
           <button type="button" {{action "showDeleteModal" developer}} class="btn btn-outline-danger btn-circle"><i class="fa fa-times"></i></button>
       </td>
     </tr>
