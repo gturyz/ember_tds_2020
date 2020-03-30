@@ -14,8 +14,8 @@ export default Route.extend({
 			let project = this.store.createRecord('project', {
                 name: data.name,
                 descriptif: data.descriptif,
-                startDate: data.startDate,
-                dueDate: data.dueDate,
+                startDate: new Date(data.startDate),
+                dueDate: new Date(data.dueDate),
                 ownerId: o
 			});
             project.save().then(()=>this.transitionTo("projects"));

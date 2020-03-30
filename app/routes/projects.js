@@ -12,8 +12,8 @@ export default Route.extend({
 			this.store.findRecord('project', data.id).then(function(project) {
 				project.set('name',data.name);
 				project.set('descriptif',data.descriptif);
-				project.set('startDate',data.startDate);
-				project.set('dueDate',data.dueDate);
+				project.set('startDate',new Date(data.startDate));
+				project.set('dueDate',new Date(data.dueDate));
 				project.set('ownerId',data.ownerId);
 				project.save();
 			});
