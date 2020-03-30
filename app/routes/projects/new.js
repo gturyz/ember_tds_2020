@@ -12,11 +12,23 @@ export default Route.extend({
     actions: {
 		createNewProject(data) {
             let self = this;
+            let dueDate;
+            if (data.dueDate==="") {
+                dueDate = "00-00-0000";
+            } else {
+                dueDate = data.dueDate
+            }
+            let startDate;
+            if (data.startDate==="") {
+                startDate = "00-00-0000";
+            } else {
+                startDate = data.startDate
+            }
 			let project = this.store.createRecord('project', {
                 name: data.name,
                 descriptif: data.descriptif,
-                startDate: new Date(data.startDate),
-                dueDate: new Date(data.dueDate),
+                startDate: new Date(startDate),
+                dueDate: new Date(dueDate),
                 owner: self.owner
 			});
             project.save().then(()=>this.transitionTo("projects"));
