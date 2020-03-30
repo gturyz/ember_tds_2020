@@ -24,8 +24,9 @@
       <th scope="row">{{format-date project.startDate}}</th>
       <th scope="row">{{format-date project.dueDate}}</th>
       <td class="text-right">
-          <LinkTo type="button" @route="projects.edit" @model={{project.id}} class="btn btn-outline-secondary btn-circle"><i class="fa fa-pencil-square-o"></i></LinkTo>
-          <button type="button" {{action "showDeleteModal" project}} class="btn btn-outline-danger btn-circle"><i class="fa fa-times"></i></button>
+        <LinkTo type="button" @route="project" @model={{project.id}} class="btn btn-outline-primary btn-circle"><i class="fa fa-folder-open"></i></LinkTo>
+        <LinkTo type="button" @route="projects.edit" @model={{project.id}} class="btn btn-outline-secondary btn-circle"><i class="fa fa-pencil-square-o"></i></LinkTo>
+        <button type="button" {{action "showDeleteModal" project}} class="btn btn-outline-danger btn-circle"><i class="fa fa-times"></i></button>
       </td>
     </tr>
     {{/each}}

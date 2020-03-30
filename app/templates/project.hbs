@@ -1,0 +1,38 @@
+<div class="alert jumbotron">
+  <div class="container">
+    <h1 class="display-15">{{model.project.name}}</h1>
+    <p class="lead">{{model.project.descriptif}}</p>
+  </div>
+</div>
+<h4>Stories</h4>
+<LinkTo type="button" @route="story.new" @model={{model.project.id}} class="btn btn-secondary"><i class="fa fa-plus"></i> Add Story in project</LinkTo>
+<br><br>
+<table class="table">
+  <tbody>
+    {{#each this.model.stories as |story|}}
+    <tr>
+      <th scope="row"><i class="fa fa-file fa-3x"></i></th>
+      <td>
+        <b class="display-15">{{story.code}}</b>
+        <p>{{story.description}} {{#each story.tags as |tag|}}<span class="badge" class={{badge tag.color}}>{{tag.title}}</span>{{/each}}</p>
+      </td>
+      <td>
+        <div class="input-group mb-3 justify-content-end">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">{{story.developer.identity}}</span>
+            </div>            
+            <div class="input-group-append">
+                <button class="btn btn-secondary" type="button"><i class="fa fa-user"></i> Modifier...</button>
+            </div>
+        </div>
+      </td>
+    </tr>
+    {{/each}}
+    {{#if this.model.stories}}
+    {{else}}
+        <tr><th scope="row">Story list is empty!!!</th></tr>
+    {{/if}}
+  </tbody>
+</table>
+
+{{outlet}}

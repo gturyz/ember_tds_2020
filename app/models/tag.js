@@ -1,6 +1,6 @@
 import DS from 'ember-data';
-const { Model } = DS;
 
-export default Model.extend({
-
+export default DS.Model.extend({
+    title: DS.attr('string'),
+    color: DS.attr('string')
 });
