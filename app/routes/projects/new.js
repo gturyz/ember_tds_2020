@@ -12,14 +12,14 @@ export default Route.extend({
     actions: {
 		createNewProject(data) {
             let self = this;
-            let dueDate;
-            if (data.dueDate==="") {
+            let dueDate = new Date(data.dueDate);
+            if (data.dueDate===""|| (dueDate.getDate()==1&&dueDate.getMonth()==0&&dueDate.getFullYear()==1970)) {
                 dueDate = "00-00-0000";
             } else {
                 dueDate = data.dueDate
             }
-            let startDate;
-            if (data.startDate==="") {
+            let startDate = new Date(startDate);
+            if (data.startDate===""|| (startDate.getDate()==1&&startDate.getMonth()==0&&startDate.getFullYear()==1970)) {
                 startDate = "00-00-0000";
             } else {
                 startDate = data.startDate
