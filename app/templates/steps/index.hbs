@@ -1,0 +1,31 @@
+<div class="alert jumbotron">
+  <div class="container">
+    <h1 class="display-15">models\Step</h1>
+    <p class="lead">Data administration</p>
+  </div>
+</div>
+<LinkTo class="btn btn-warning" @route="steps.new"><i class="fa fa-plus"></i> Add a new models\Step...</LinkTo>
+<br><br>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this.model.steps as |step|}}
+    <tr>
+      <th scope="row">{{step.title}}</th>
+      <td class="text-right">
+          <LinkTo type="button" @route="steps.edit" @model={{step.id}} class="btn btn-outline-secondary btn-circle"><i class="fa fa-pencil-square-o"></i></LinkTo>
+          <button type="button" {{action "showDeleteModal" step}} class="btn btn-outline-danger btn-circle"><i class="fa fa-times"></i></button>
+      </td>
+    </tr>
+    {{/each}}
+    {{#if this.model.steps}}
+    {{else}}
+        <tr><th scope="row">Step list is empty!!!</th></tr>
+    {{/if}}
+  </tbody>
+</table>

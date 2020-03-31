@@ -1,20 +1,52 @@
-
 <div class="ui header">
   <i class="icon calendar alternate"></i>
   <div class="content">Dashboard
-    <div class="sub header">Progress of the project stories</div>
+    <div class="sub header">Progres of the project stories</div>
   </div>
 </div>
-{{!-- {{#if model.selectedStory}} --}}
-<div class="card bg-green">
-    <h5 class="card-header">With selected story : {{model.selectedStory.code}}</h5>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-            <LinkTo class="btn btn-secondary" @route="stories.edit" @model={{model.selectedStory.id}} type="button"><i class="fa fa-folder-open"></i> Open...</LinkTo>
-            <button type="button" class="btn btn-secondary"><i class="fa fa-arrow-circle-right"></i> Move to step</button>
-            <button type="button" class="btn btn-danger"><i class="fa fa-times"></i> Remove</button>
-        </li>
-    </ul>
+
+<div class="ui segments">
+  <div class="ui tertiary segment">
+    <p>With selected story : <strong>{{model.selectetdStory.code}}</strong></p>
+  </div>
+  <div class="ui segment">
+    <button class="ui button"><i class="folder open icon"></i>Open...</button>
+    {{#ui-dropdown class="ui floating dropdown labeled icon button" onChange=(action (mut model.steps)) as |execute mapper|}}
+      <i class="arrow circle right icon"></i>
+      <span class="default-text">Move to step</span>
+      <div class="menu">
+        {{#each model.steps as |step|}}
+          <div class="item" data-value={{map-value mapper step}}>
+            <i class="step forward icon"></i>
+            {{step.title}}
+          </div>
+        {{/each}}
+      </div>
+    {{/ui-dropdown}}
+    <button class="ui red button"><i class="times icon"></i>Remove</button>
+  </div>
 </div>
-{{!-- {{/if}} --}}
+
+
+<div class="row">
+    {{#each model.steps as |step| }}
+    <div class="col-sm">
+        <div class="ui segments">
+            <div class="ui secondary segment">
+                <p><i class="step forward icon"></i>{{step.title}}</p>
+            </div>
+            <div class="ui segment">
+                {{#draggable-dropzone content=step dropped="addToStep" class="column"}}
+                    {{#each step.stories as |story|}}
+                        {{#draggable-item class="ui segment" activeClass="green inverted" content=story onClick="activate"}}
+                            
+                        {{/draggable-item}}
+                    {{/each}}
+                {{/draggable-dropzone}}
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+<br>
 {{outlet}}

@@ -30,6 +30,10 @@ Router.map(function() {
   this.route('tags', function() {
     this.route('edit', { path: '/edit/:id' });
   });
+  this.route('steps', function() {
+    this.route('new');
+    this.route('edit', { path: '/edit/:id' });
+  });
 });
 
 export default Router;

@@ -1,0 +1,13 @@
+<div class="alert jumbotron">
+  <div class="container">
+    <h1 class="display-15">models\Step</h1>
+    <p class="lead">New object creation</p>
+  </div>
+</div>
+<div class="form-group">
+    <label for="inputName">Title</label>
+    <Input class="form-control" id="inputName" @value={{model.title}}></Input>
+</div>
+<a type="button" {{action 'createNewStep' model}} class="btn btn-success"><i class="fa fa-check-circle"></i> Validate</a>
+<LinkTo type="button" @route="steps" class="btn btn-secondary"><i class="fa fa-times-circle"></i> Cancel</LinkTo>
+{{outlet}}
