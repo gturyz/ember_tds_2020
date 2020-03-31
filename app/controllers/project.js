@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 
 export default Controller.extend({
-    backlog: computed('stories.@each.step.id', 'boardVisible', function () {
+    backlog: computed('stories.@each.step', 'boardVisible', function () {
         let stories = [];
         if (this.boardVisible=='project.board') {
             this.model.stories.forEach(story => {
