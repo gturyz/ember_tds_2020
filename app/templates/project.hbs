@@ -6,7 +6,7 @@
 </div>
 <h4>Stories</h4>
 <LinkTo type="button" @route="story.new" @model={{model.project.id}} class="btn btn-secondary"><i class="fa fa-plus"></i> Add Story in project</LinkTo>
-<LinkTo type="button" @route="project.board" @model={{model.project.id}} onclick="{{action (mut boardVisible "true")}}" class="btn btn-success"><i class="fa fa-calendar"></i> Dashboard</LinkTo>
+<LinkTo type="button" @route="project.board" @model={{model.project.id}} class="btn btn-success"><i class="fa fa-calendar"></i> Dashboard</LinkTo>
 <LinkTo type="button" @route="projects" class="btn btn-secondary"><i class="fa fa-caret-square-o-left"></i> Back to projects</LinkTo>
 <br><br>
 <div class="ui segments">
@@ -14,7 +14,7 @@
       <p>Backlog</p>
     </div>
   {{#draggable-dropzone content=step dropped="addToStep" class="ui segment"}}
-    {{#each this.model.stories as |story|}}
+    {{#each this.backlog as |story|}}
     <div class="ui segments">
     {{#draggable-item class="ui clearing segment" activeClass="" content=story onClick="activate"}}
             <div class="ui header">

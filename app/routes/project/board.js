@@ -13,8 +13,8 @@ export default Route.extend({
         addToStep(story, step) {
             this.store.findRecord('story', story).then(function(story) {
 				story.set('step', step);
-				story.save();
-			});
+                story.save();
+            });
         }
     }
 });
