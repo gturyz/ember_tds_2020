@@ -1,0 +1,24 @@
+<div class="alert jumbotron">
+  <div class="container">
+    <h1 class="display-15">models\Tag</h1>
+    <p class="lead">Edit object</p>
+  </div>
+</div>
+<div class="form-group">
+    <div class="input-group justify-content-end">
+            <Input type="text" class="form-control" @value={{model.tag.title}} id="tag" placeholder="Tag..."></Input>   
+            {{!-- <div class="input-group-append"> --}}
+                <select class="custom-select input-small" id="color" onchange={{action (mut model.tag.color) value='target.value'}}>
+                {{#each this.model.colors as |color|}}
+                    {{#if (eq color model.tag.color)}}
+                        <option value={{color}} selected>{{color}}</option>
+                    {{else}}
+                        <option value={{color}}>{{color}}</option>
+                    {{/if}}
+                {{/each}}
+            </select>
+            {{!-- </div> --}}
+        </div>
+</div>
+<a type="button" {{action 'updateTag' model.tag}} class="btn btn-success"><i class="fa fa-check-circle"></i> Validate</a>
+<LinkTo type="button" @route="tags" class="btn btn-secondary"><i class="fa fa-times-circle"></i> Cancel</LinkTo>

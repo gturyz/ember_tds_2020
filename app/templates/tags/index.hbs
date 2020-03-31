@@ -1,0 +1,30 @@
+<div class="alert jumbotron">
+  <div class="container">
+    <h1 class="display-15">models\Tag</h1>
+    <p class="lead">Data administration</p>
+  </div>
+</div>
+<br><br>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this.model.tags as |tag|}}
+    <tr>
+      <th scope="row"><span class="badge {{badge tag.color}}">{{tag.title}}</span></th>
+      <td class="text-right">
+          <LinkTo type="button" @route="tags.edit" @model={{tag.id}} class="btn btn-outline-secondary btn-circle"><i class="fa fa-pencil-square-o"></i></LinkTo>
+          <button type="button" {{action "showDeleteModal" tag}} class="btn btn-outline-danger btn-circle"><i class="fa fa-times"></i></button>
+      </td>
+    </tr>
+    {{/each}}
+    {{#if this.model.tags}}
+    {{else}}
+        <tr><th scope="row">Tag list is empty!!!</th></tr>
+    {{/if}}
+  </tbody>
+</table>
