@@ -1,0 +1,66 @@
+<div class="alert jumbotron">
+  <div class="container">
+    <h1 class="display-15">{{model.story.project.name}}</h1>
+    <p class="lead">Modification d'une story dans le projet</p>
+  </div>
+</div>
+<form>
+  <div class="form-group">
+    <label for="code">Code</label>
+    <Input type="text" class="form-control" id="code" placeholder="Code..." @value={{model.story.code}}></Input>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <Textarea class="form-control" id="description" rows="3" @value={{model.story.description}}></Textarea>
+  </div>
+  <div class="form-group">
+    {{#ui-dropdown class="search fluid selection" allowAdditions=true selected=model.story.developer onChange=(action (mut model.story.developer)) as |execute mapper|}}
+        <div class="default text">Developer</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            {{#each model.developers as |developer|}}
+            <div data-value="{{map-value mapper developer}}" class="item">
+                {{developer.identity}}
+            </div>
+            {{/each}}
+        </div>
+    {{/ui-dropdown}}
+  </div>
+  <div class="row">
+    <div class="col">
+        {{#ui-dropdown class="fluid multiple selection" selected=model.story.tags onChange=(action (mut model.story.tags)) as |execute mapper|}}
+            <i class="dropdown icon"></i>
+            <div class="default text">Select tag</div>
+            <div class="menu">
+                {{#each model.tags as |tag|}}
+                <div data-value="{{map-value mapper tag}}" class="item">
+                    <i class="ui {{tag.color}} empty circular label"></i>
+                    {{tag.title}}
+                </div>
+                {{/each}}
+            </div>
+        {{/ui-dropdown}}
+    </div>
+    <div class="col">
+        <div class="input-group justify-content-end">
+            <Input type="text" class="form-control" @value={{model.tag.title}} id="tag" placeholder="Tag..."></Input>
+            <select class="custom-select input-small" id="color" onchange={{action (mut model.tag.color) value='target.value'}}>
+                {{#each this.model.colors as |color|}}
+                    {{#if (eq color "red")}}
+                        <option value={{color}} selected>{{color}}</option>
+                    {{else}}
+                        <option value={{color}}>{{color}}</option>
+                    {{/if}}
+                {{/each}}
+            </select>
+            <div class="input-group-append">
+                <button class="btn btn-secondary" {{action "createNewTag" model.tag}} type="button">Nouveau tag</button>
+            </div>
+        </div>
+    </div>
+  </div>
+</form>
+<br>
+<a type="button" {{action 'updateStory' model.story model.story.project}} class="btn btn-success"><i class="fa fa-check-circle"></i> Validate</a>
+<LinkTo type="button" @route="project" @model={{model.story.project.id}} class="btn btn-secondary"><i class="fa fa-times-circle"></i> Cancel</LinkTo>
+{{outlet}}

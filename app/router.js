@@ -20,6 +20,10 @@ Router.map(function() {
   this.route('story', function() {
     this.route('new', { path: '/new/:id' });
   });
+
+  this.route('stories', function() {
+    this.route('edit', { path: '/edit/:id' });
+  });
 });
 
 export default Router;

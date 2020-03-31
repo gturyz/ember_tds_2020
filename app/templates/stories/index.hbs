@@ -1,0 +1,32 @@
+<div class="alert jumbotron">
+  <div class="container">
+    <h1 class="display-15">models\Story</h1>
+    <p class="lead">Data administration</p>
+  </div>
+</div>
+<br><br>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Code</th>
+      <th scope="col">Description</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this.model.stories as |story|}}
+    <tr>
+      <th scope="row">{{story.code}}</th>
+      <th>{{story.description}}</th>
+      <td class="text-right">
+          {{!-- <LinkTo type="button" @route="stories.edit" @model={{story.id}} class="btn btn-outline-secondary btn-circle"><i class="fa fa-pencil-square-o"></i></LinkTo> --}}
+          <button type="button" {{action "showDeleteModal" story}} class="btn btn-outline-danger btn-circle"><i class="fa fa-times"></i></button>
+      </td>
+    </tr>
+    {{/each}}
+    {{#if this.model.stories}}
+    {{else}}
+        <tr><th scope="row">Story list is empty!!!</th></tr>
+    {{/if}}
+  </tbody>
+</table>

@@ -3,8 +3,7 @@ import Route from '@ember/routing/route';
 export default Route.extend({    
 	model() {
 		return {
-			projects: this.store.findAll('project'),
-            selectedProject: undefined
+			projects: this.store.findAll('project')
         }
 	},
 	actions: {
