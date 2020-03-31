@@ -1,7 +1,6 @@
-# evaluation
+# Application web de gestion de projet avec EmberJS
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+C'est une application réalisée dans le cadre de mes études.
 
 ## Prerequisites
 
@@ -15,7 +14,8 @@ You will need the following things properly installed on your computer.
 ## Installation
 
 * `git clone <repository-url>` this repository
-* `cd evaluation`
+* `cd ember_tds_2020`
+* `git checkout evaluation`
 * `npm install`
 
 ## Running / Development
@@ -46,7 +46,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+https://evaluation-gturyz.herokuapp.com/
 
 ## Further Reading / Useful Links
 
