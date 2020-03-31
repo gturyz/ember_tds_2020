@@ -8,5 +8,13 @@ export default Route.extend({
             project: this.store.find('project', id),
             steps: this.store.findAll('step')
         })
+    },
+    actions: {
+        addToStep(story, step) {
+            this.store.findRecord('story', story).then(function(story) {
+				story.set('step', step);
+				story.save();
+			});
+        }
     }
 });
