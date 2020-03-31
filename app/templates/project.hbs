@@ -6,6 +6,8 @@
 </div>
 <h4>Stories</h4>
 <LinkTo type="button" @route="story.new" @model={{model.project.id}} class="btn btn-secondary"><i class="fa fa-plus"></i> Add Story in project</LinkTo>
+<LinkTo type="button" @route="project.board" @model={{model.project.id}} class="btn btn-success"><i class="fa fa-calendar"></i> Dashboard</LinkTo>
+<LinkTo type="button" @route="projects" class="btn btn-secondary"><i class="fa fa-caret-square-o-left"></i> Back to projects</LinkTo>
 <br><br>
 <table class="table">
   <tbody>
@@ -22,7 +24,7 @@
                 <span class="input-group-text" id="inputGroup-sizing-default">{{story.developer.identity}}</span>
             </div>            
             <div class="input-group-append">
-                <LinkTo class="btn btn-secondary" @route="stories.edit" @model={{story.id}} type="button"><i class="fa fa-user"></i> Modifier...</LinkTo>
+                <LinkTo class="btn btn-secondary" @route="stories.edit" @model={{story.id}} type="button"><i class="fa fa-folder-open"></i> Modifier...</LinkTo>
             </div>
         </div>
       </td>

@@ -1,0 +1,20 @@
+
+<div class="ui header">
+  <i class="icon calendar alternate"></i>
+  <div class="content">Dashboard
+    <div class="sub header">Progress of the project stories</div>
+  </div>
+</div>
+{{!-- {{#if model.selectedStory}} --}}
+<div class="card bg-green">
+    <h5 class="card-header">With selected story : {{model.selectedStory.code}}</h5>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <LinkTo class="btn btn-secondary" @route="stories.edit" @model={{model.selectedStory.id}} type="button"><i class="fa fa-folder-open"></i> Open...</LinkTo>
+            <button type="button" class="btn btn-secondary"><i class="fa fa-arrow-circle-right"></i> Move to step</button>
+            <button type="button" class="btn btn-danger"><i class="fa fa-times"></i> Remove</button>
+        </li>
+    </ul>
+</div>
+{{!-- {{/if}} --}}
+{{outlet}}
