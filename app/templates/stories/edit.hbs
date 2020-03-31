@@ -28,7 +28,7 @@
   </div>
   <div class="row">
     <div class="col">
-        {{#ui-dropdown class="fluid multiple selection" selected=model.story.tags onChange=(action (mut model.story.tags)) as |execute mapper|}}
+        {{#ui-dropdown class="fluid multiple selection" selected=model.story.tags onChange=(action (mut model.test)) as |execute mapper|}}
             <i class="dropdown icon"></i>
             <div class="default text">Select tag</div>
             <div class="menu">
@@ -61,6 +61,6 @@
   </div>
 </form>
 <br>
-<a type="button" {{action 'updateStory' model.story model.story.project model.story.developer}} class="btn btn-success"><i class="fa fa-check-circle"></i> Validate</a>
+<a type="button" {{action 'updateStory' model.story model.story.project model.story.developer model.test}} class="btn btn-success"><i class="fa fa-check-circle"></i> Validate</a>
 <LinkTo type="button" @route="project" @model={{model.story.project.id}} class="btn btn-secondary"><i class="fa fa-times-circle"></i> Cancel</LinkTo>
 {{outlet}}
