@@ -61,6 +61,6 @@
   </div>
 </form>
 <br>
-<a type="button" {{action 'updateStory' model.story model.story.project}} class="btn btn-success"><i class="fa fa-check-circle"></i> Validate</a>
+<a type="button" {{action 'updateStory' model.story model.story.project model.story.developer}} class="btn btn-success"><i class="fa fa-check-circle"></i> Validate</a>
 <LinkTo type="button" @route="project" @model={{model.story.project.id}} class="btn btn-secondary"><i class="fa fa-times-circle"></i> Cancel</LinkTo>
 {{outlet}}

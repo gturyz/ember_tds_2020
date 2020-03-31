@@ -16,13 +16,13 @@ export default Route.extend({
         })
     },
     actions: {
-		updateStory(data, project) {
+		updateStory(data, project, developer) {
 			this.store.findRecord('story', data.id).then(function(story) {
 				story.set('code',data.code);
 				story.set('description',data.description);
 				story.set('project',project);
 				story.set('tags',data.tags);
-				story.set('developer',data.developer);
+				story.set('developer',developer);
 				story.save();
 			}).then(()=>this.transitionTo("project", project.get('id')));
         },
